@@ -1,0 +1,280 @@
+/* Chat Window Container */
+
+body {
+    font-family: 'Lato', 'apple color emoji', 'notocoloremoji', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* This turns the insert marker element into a vertical fill.
+ * This way the colored side bar is expanded to the full height of the view. */
+#insert {
+    display: table-row;
+    height: 100%;
+}
+
+.container {
+    height: 100%;
+    width:  100%;
+    background-color: #fff;
+    position: absolute;
+    display: table;
+}
+/* Holds all user and message content */
+
+.message-block {
+    display: table;
+    border: 0px solid black;
+    border-spacing: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    overflow-wrap: break-word; /* Allow breaking of long words (e.g. URLs) to prevent overflow. */
+}
+
+/* Individual message */
+
+.message {
+    display: table-row;
+    border: inherit;
+    width: 100%;
+    margin-top: 10px;
+    border-top: 0.2em solid transparent;
+}
+
+.additional {
+    margin-top: -12px;
+}
+
+.unread {
+    height: 30px;
+    display: table-row;
+    border: inherit;
+    /*width: 100%;*/
+    margin-top: -6px;
+    margin-bottom: -15px;
+    margin-left: 190px;
+    margin-right: 20px;
+    text-align: right;
+}
+
+.unread p {
+    margin-top: 0px;
+    font-size: 75%;
+    text-transform: uppercase;
+    color: #ffd180;
+    border-top: solid 1px #ffd180;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+/* Left column content */
+
+:not(.additional) > .user {
+    height: 2.5em;
+}
+
+.user {
+    display: table-cell;
+    border: inherit;
+    margin-top: 2px;
+    text-align: right;
+    width:     4.6em;
+    max-width: 4.6em;
+    min-width: 4.6em;
+    background-color: #595959;
+}
+
+div.time {
+    color: #ffffff;
+    font-size: 80%;
+    font-weight: 300;
+
+    float: right;
+    background-color: #595959;
+    border-top-left-radius: 3ex 3ex;
+    border-bottom-left-radius: 3ex 3ex;
+    /* min-width: 50px; */
+    text-align: right;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    padding-top: 0.05ex;
+    padding-bottom: 0.05ex;
+    margin-left: 0.5em;
+}
+
+.myavatar {
+    height: 2.5em;
+    width: 2.5em;
+    display: inline-block;
+    margin: 0 auto;
+    background-color: #92c47e;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    position: relative;
+    left: 1px;
+}
+
+.otheravatar {
+    height: 2.5em;
+    width: 2.5em;
+    display: inline-block;
+    margin: 0 auto;
+    background-color: #6eb6ce;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    position: relative;
+    left: 1px;
+}
+
+.myavatar img {
+    border-radius: 50%;
+    height: 2.5em;
+    position: relative;
+    left: -2px;
+}
+
+.otheravatar img {
+    border-radius: 50%;
+    height: 2.5em;
+    position: relative;
+    left: -2px;
+}
+
+.myright {
+    float: right;
+    width: 1.05em;    /* myuser width/2 - ( other avatar width/2) = 1.05em*/
+    height: 2.5em;
+    background: #92c47e;
+}
+
+.otherright {
+    float: right;
+    width: 1.05em;    /* myuser width/2 - ( other avatar width/2) = 1.05em*/
+    height: 2.5em;
+    background: #6eb6ce;
+}
+
+:not(.additional) > div > .systemavatar {
+    height: 2.5em;
+}
+
+.systemavatar {
+    width: 2.5em;
+    display: inline-block;
+    margin: 0 auto;
+    background-color: #595959;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+}
+
+:not(.additional) > div > .systemright {
+    height: 2.5em;
+}
+
+.systemright {
+    float: right;
+    width: 1.05em;    /* myuser width/2 - ( other avatar width/2) = 1.05em*/
+    background: #595959;
+}
+
+/* Right column content */
+.message:not(.additional) {
+    border-top: 1.2em solid transparent; /* Workaround for table rows not having a padding. */
+}
+
+.message:not(.additional) .text {
+    min-height: 2.5em;
+}
+
+.text {
+    display: table-cell;
+    border: inherit;
+    color: #595959;
+    vertical-align: top;
+
+    /* Break long URLs at any point. */
+    word-break: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.username {
+    margin-left: 20px;
+    font-weight: 700;
+    margin-top: 0px;
+    margin-bottom: 0.2em;
+}
+
+.myusername {
+    color: #92c47e;
+}
+
+.otherusername {
+    color: #6eb6ce;
+}
+
+.message-content {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.system-message {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color: #aaa;
+    font-style: italic;
+}
+
+/* receipt */
+span.swift_receipt > img {
+    height: 12px;
+}
+
+.resendButton {
+}
+
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+    visibility: hidden;
+    width: 50px;
+    background-color: #6eb6ce;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -25px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #6eb6ce transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+    visibility: visible;
+    animation: fadeIn 1s;
+}

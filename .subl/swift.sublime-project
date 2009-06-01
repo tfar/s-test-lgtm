@@ -1,0 +1,36 @@
+/* http://www.sublimetext.com/docs/2/projects.html */
+{
+	"folders":
+	[
+		{
+			"path": "..",
+			"folder_exclude_patterns": ["tmp", ".sconf_temp", ".settings", "Swift.app"],
+			"file_exclude_patterns": ["moc_*", ".cproject", ".project", ".sconsign.dblite", "*~", "config.log", "*.o"]
+		}
+	],
+	"settings":
+	{
+		"translate_tabs_to_spaces": false
+	},
+	"build_systems":
+	[
+		{
+			"name": "SCons",
+			"cmd" : ["python", "3rdParty/SCons/scons.py"],
+			"working_dir": "${project_path}/..",
+			"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$"			
+		},
+		{
+			"name": "SCons (Swift)",
+			"cmd" : ["python", "3rdParty/SCons/scons.py", "Swift"],
+			"working_dir": "${project_path}/..",
+			"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$"			
+		},
+		{
+			"name": "SCons (Test)",
+			"cmd" : ["python", "3rdParty/SCons/scons.py", "check=1", "QA"],
+			"working_dir": "${project_path}/..",
+			"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$"
+		}
+	]
+}

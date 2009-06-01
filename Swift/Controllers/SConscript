@@ -1,0 +1,116 @@
+Import("env")
+import Version
+
+################################################################################
+# Flags
+################################################################################
+
+if env["SCONS_STAGE"] == "flags" :
+    env["SWIFT_CONTROLLERS_FLAGS"] = {
+            "LIBPATH": [Dir(".")],
+            "LIBS": ["SwiftControllers"]
+        }
+
+
+################################################################################
+# Build
+################################################################################
+
+if env["SCONS_STAGE"] == "build" :
+    myenv = env.Clone()
+    myenv.BuildVersion("BuildVersion.h", project = "swift")
+    myenv.UseFlags(env["SWIFTEN_FLAGS"])
+    myenv.UseFlags(env["SWIFTEN_DEP_FLAGS"])
+    myenv.StaticLibrary("SwiftControllers", [
+            "AdHocController.cpp",
+            "AdHocManager.cpp",
+            "BlockListController.cpp",
+            "Chat/Chattables.cpp",
+            "Chat/ChatController.cpp",
+            "Chat/ChatControllerBase.cpp",
+            "Chat/ChatMessageParser.cpp",
+            "Chat/ChatsManager.cpp",
+            "Chat/MUCController.cpp",
+            "Chat/MUCSearchController.cpp",
+            "Chat/UserSearchController.cpp",
+            "ChatMessageSummarizer.cpp",
+            "Contact.cpp",
+            "ContactEditController.cpp",
+            "ContactProvider.cpp",
+            "ContactSuggester.cpp",
+            "ContactsFromXMPPRoster.cpp",
+            "EventNotifier.cpp",
+            "EventWindowController.cpp",
+            "FdpFormSubmitController.cpp",
+            "FileTransfer/FileTransferController.cpp",
+            "FileTransfer/FileTransferOverview.cpp",
+            "FileTransfer/FileTransferProgressInfo.cpp",
+            "FileTransferListController.cpp",
+            "Highlighting/HighlightAction.cpp",
+            "Highlighting/HighlightEditorController.cpp",
+            "Highlighting/HighlightManager.cpp",
+            "Highlighting/Highlighter.cpp",
+            "HistoryController.cpp",
+            "HistoryViewController.cpp",
+            "AccountController.cpp",
+            "PresenceNotifier.cpp",
+            "PreviousStatusStore.cpp",
+            "ProfileController.cpp",
+            "ProfileSettingsProvider.cpp",
+            "Roster/ContactRosterItem.cpp",
+            "Roster/GroupRosterItem.cpp",
+            "Roster/Roster.cpp",
+            "Roster/RosterController.cpp",
+            "Roster/RosterGroupExpandinessPersister.cpp",
+            "Roster/RosterItem.cpp",
+            "Roster/RosterVCardProvider.cpp",
+            "Roster/TableRoster.cpp",
+            "SettingConstants.cpp",
+            "Settings/SettingsProviderHierachy.cpp",
+            "Settings/XMLSettingsProvider.cpp",
+            "ShowProfileController.cpp",
+            "SoundEventController.cpp",
+            "StatusCache.cpp",
+            "StatusTracker.cpp",
+            "StatusUtil.cpp",
+            "Storages/AvatarFileStorage.cpp",
+            "Storages/CapsFileStorage.cpp",
+            "Storages/CertificateFileStorage.cpp",
+            "Storages/CertificateMemoryStorage.cpp",
+            "Storages/CertificateStorage.cpp",
+            "Storages/CertificateStorageFactory.cpp",
+            "Storages/FileStorages.cpp",
+            "Storages/RosterFileStorage.cpp",
+            "Storages/VCardFileStorage.cpp",
+            "SystemTrayController.cpp",
+            "Translator.cpp",
+            "UIEvents/UIEvent.cpp",
+            "UIInterfaces/ChatListWindow.cpp",
+            "UIInterfaces/FdpFormSubmitWindow.cpp",
+            "UIInterfaces/HighlightEditorWindow.cpp",
+            "UIInterfaces/XMLConsoleWidget.cpp",
+            "WhiteboardManager.cpp",
+            "XMLConsoleController.cpp",
+            "XMPPEvents/EventController.cpp",
+            "XMPPURIController.cpp",
+        ])
+
+    env.Append(UNITTEST_SOURCES = [
+            File("Chat/UnitTest/ChatListWindowChatTest.cpp"),
+            File("Chat/UnitTest/ChatMessageParserTest.cpp"),
+            File("Chat/UnitTest/ChatsManagerTest.cpp"),
+            File("Chat/UnitTest/ChatControllerTest.cpp"),
+            File("Chat/UnitTest/ChattablesTest.cpp"),
+            File("Chat/UnitTest/MUCControllerTest.cpp"),
+            File("Roster/UnitTest/LeastCommonSubsequenceTest.cpp"),
+            File("Roster/UnitTest/RosterControllerTest.cpp"),
+            File("Roster/UnitTest/RosterTest.cpp"),
+            File("Roster/UnitTest/TableRosterTest.cpp"),
+            File("Settings/UnitTest/SettingsProviderHierachyTest.cpp"),
+            File("UnitTest/ChatMessageSummarizerTest.cpp"),
+            File("UnitTest/ContactSuggesterTest.cpp"),
+            File("UnitTest/FdpFormSubmitControllerTest.cpp"),
+            File("UnitTest/MockChatWindow.cpp"),
+            File("UnitTest/PresenceNotifierTest.cpp"),
+            File("UnitTest/PreviousStatusStoreTest.cpp"),
+        ])

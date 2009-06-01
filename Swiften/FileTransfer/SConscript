@@ -1,0 +1,53 @@
+Import("swiften_env", "env")
+
+sources = [
+        "ByteArrayReadBytestream.cpp",
+        "DefaultFileTransferTransporter.cpp",
+        "DefaultFileTransferTransporterFactory.cpp",
+        "FailingTransportSession.cpp",
+        "FileReadBytestream.cpp",
+        "FileTransfer.cpp",
+        "FileTransferManager.cpp",
+        "FileTransferManagerImpl.cpp",
+        "FileTransferOptions.cpp",
+        "FileTransferTransporter.cpp",
+        "FileTransferTransporterFactory.cpp",
+        "FileWriteBytestream.cpp",
+        "IBBReceiveSession.cpp",
+        "IBBReceiveTransportSession.cpp",
+        "IBBSendSession.cpp",
+        "IBBSendTransportSession.cpp",
+        "IncomingFileTransfer.cpp",
+        "IncomingFileTransferManager.cpp",
+        "IncomingJingleFileTransfer.cpp",
+        "IncrementalBytestreamHashCalculator.cpp",
+        "JingleFileTransfer.cpp",
+        "LocalJingleTransportCandidateGenerator.cpp",
+        "OutgoingFileTransfer.cpp",
+        "OutgoingFileTransferManager.cpp",
+        "OutgoingJingleFileTransfer.cpp",
+        "ReadBytestream.cpp",
+        "RemoteJingleTransportCandidateSelector.cpp",
+        "SOCKS5BytestreamClientSession.cpp",
+        "SOCKS5BytestreamProxiesManager.cpp",
+        "SOCKS5BytestreamProxyFinder.cpp",
+        "SOCKS5BytestreamRegistry.cpp",
+        "SOCKS5BytestreamServer.cpp",
+        "SOCKS5BytestreamServerManager.cpp",
+        "SOCKS5BytestreamServerPortForwardingUser.cpp",
+        "SOCKS5BytestreamServerResourceUser.cpp",
+        "SOCKS5BytestreamServerSession.cpp",
+        "TransportSession.cpp",
+        "WriteBytestream.cpp",
+    ]
+
+swiften_env.Append(SWIFTEN_OBJECTS = swiften_env.SwiftenObject(sources))
+
+env.Append(UNITTEST_SOURCES = [
+            File("UnitTest/IBBReceiveSessionTest.cpp"),
+            File("UnitTest/IBBSendSessionTest.cpp"),
+            File("UnitTest/IncomingJingleFileTransferTest.cpp"),
+            File("UnitTest/OutgoingJingleFileTransferTest.cpp"),
+            File("UnitTest/SOCKS5BytestreamClientSessionTest.cpp"),
+            File("UnitTest/SOCKS5BytestreamServerSessionTest.cpp"),
+    ])

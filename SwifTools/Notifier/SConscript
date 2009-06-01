@@ -1,0 +1,21 @@
+Import("swiftools_env")
+
+myenv = swiftools_env.Clone()
+
+sources = [
+        "Notifier.cpp",
+    ]
+
+if swiftools_env.get("HAVE_GROWL", False) :
+    sources += [
+            "GrowlNotifier.mm",
+            "GrowlNotifierDelegate.mm",
+        ]
+elif myenv["PLATFORM"] == "darwin" and myenv["target"] == "native" :
+    sources += [
+            "NotificationCenterNotifier.mm",
+            "NotificationCenterNotifierDelegate.mm",
+        ]
+
+objects = myenv.StaticObject(sources)
+swiftools_env.Append(SWIFTOOLS_OBJECTS = objects)

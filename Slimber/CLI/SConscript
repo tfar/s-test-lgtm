@@ -1,0 +1,13 @@
+Import("env")
+
+myenv = env.Clone()
+myenv.UseFlags(env["SLIMBER_FLAGS"])
+myenv.UseFlags(env["LIMBER_FLAGS"])
+myenv.UseFlags(env["SWIFTOOLS_FLAGS"])
+myenv.UseFlags(env["SWIFTEN_FLAGS"])
+myenv.UseFlags(env["SWIFTEN_DEP_FLAGS"])
+
+myenv.Program("slimber", [
+        "main.cpp",
+        "DummyMenulet.cpp",
+    ])
