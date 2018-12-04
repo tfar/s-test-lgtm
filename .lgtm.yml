@@ -17,4 +17,4 @@ extraction:
         - libhunspell-dev
     index:
       build_command:
-        - ./scons test=unit
+        - NUM_CPU=2 ./scons -j 2 test=none Swiften
